@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +23,6 @@ public class AccountService {
 
     private final AccountRepository accountRepository;
     private final CurrencyRateService currencyRateService;
-    //private final Map<String, Object> accountLocks = new ConcurrentHashMap<>();
     private final BigDecimal TRANSACTION_FEE = new BigDecimal("0.01");
 
     @Autowired
@@ -113,6 +114,6 @@ public class AccountService {
     }
 
     private BigDecimal computeTransactionFee(BigDecimal amount) {
-        return amount.multiply(TRANSACTION_FEE).setScale(4, BigDecimal.ROUND_HALF_UP);
+        return amount.multiply(TRANSACTION_FEE).setScale(4, RoundingMode.HALF_UP);
     }
 }
