@@ -67,12 +67,13 @@ mvn test -Dtest=MoneytransferApplicationTests
 The Money Transfer API provides the following endpoints:
 ### Find Account
 GET /api/accounts/{accountNumber}
+
 ### Transfer Money
 POST /api/transfers
 
 {
-"fromAccountNumber": "1",
-"toAccountNumber": "2",
-"amount": 50.00,
+"sourceAccountNumber": "1",
+"destinationAccountNumber": "2",
+"amount": 40.00,
 "currencyCode": "USD"
 }
